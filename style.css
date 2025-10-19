@@ -1,0 +1,200 @@
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+  background: #a37ec2;
+  font-family: 'helvetica neue';
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Amatic SC', cursive;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.score {
+  background: rgba(255,255,255,0.2);
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
+}
+
+.game {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.start-spiel {
+  background-color:#a461c7;
+  width: 120px;
+  padding: 10px 20px;
+  color: #fff;
+  margin: 0 auto;
+  border: 0;
+  font-size: 1.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.start-spiel:active {
+  background-color:#157ea7;
+  transform: translateY(2px);
+}
+
+.zum-spiel-trigger a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  color: wheat;
+  font-size: 30px;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #a461c7;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.zum-spiel-trigger img {
+  width: 100px;
+  transition: transform 0.6s ease;
+}
+
+.zum-spiel-trigger img:hover {
+  transform: rotate(360deg);
+}
+
+.mouse-spiel {
+  height: 100vh;
+}
+
+#finde-maus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hole:after {
+  display: block;
+  background: url(dirt.svg) bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 100%;
+  height:70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url('mole.svg') bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition:all 0.4s;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+
+.game.active {
+  cursor: url('img/seed.png'), auto;
+}
+
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
+    .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
+    .panel3 { background-image:url(img/maus-auto.jpg); }
+    .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
+    .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+
+    /* Flex Items */
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+      flex: 5;
+      font-size: 40px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
